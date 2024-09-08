@@ -3,17 +3,29 @@
     {
       "timestamp": "2024-09-08T13:18:57.729394",
       "status": "up"
+    },
+    {
+      "timestamp": "2024-09-08T13:27:41.923598",
+      "status": "up"
     }
   ],
   "https://example.com": [
     {
       "timestamp": "2024-09-08T13:18:57.729394",
       "status": "up"
+    },
+    {
+      "timestamp": "2024-09-08T13:27:41.923598",
+      "status": "up"
     }
   ],
   "https://thissitedoesnotexist.koj.co/": [
     {
       "timestamp": "2024-09-08T13:18:57.729394",
+      "status": "down"
+    },
+    {
+      "timestamp": "2024-09-08T13:27:41.923598",
       "status": "down"
     }
   ]
