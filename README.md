@@ -13,6 +13,12 @@ A simple uptime monitor written in Python and HTML.
 > Change the interval of the uptime check by changing the cron schedule in the `github/workflows/uptime-workflow.yml`
   
 
+## To Do
+- [ ] Add a way to notify when a website is down
+- [ ] Add a way to notify when a website is up after being down for a while
+- [ ] Add a way to notify when a website is down for a long time
+- [ ] Remove websites from JSON if they are removed from the workflow file
+
 ## Acknowledgements
 Based on AnandChowdhary's [uptime](https://github.com/upptime/upptime) project.
 
