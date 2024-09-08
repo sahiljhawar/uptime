@@ -19,6 +19,10 @@
     {
       "timestamp": "2024-09-08T13:38:17.688671",
       "status": "up"
+    },
+    {
+      "timestamp": "2024-09-08T13:39:10.306092",
+      "status": "up"
     }
   ],
   "https://example.com": [
@@ -41,6 +45,10 @@
     {
       "timestamp": "2024-09-08T13:38:17.688671",
       "status": "up"
+    },
+    {
+      "timestamp": "2024-09-08T13:39:10.306092",
+      "status": "up"
     }
   ],
   "https://thissitedoesnotexist.koj.co/": [
@@ -62,6 +70,10 @@
     },
     {
       "timestamp": "2024-09-08T13:38:17.688671",
+      "status": "down"
+    },
+    {
+      "timestamp": "2024-09-08T13:39:10.306092",
       "status": "down"
     }
   ]
