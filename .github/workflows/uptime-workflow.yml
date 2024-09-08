@@ -3,7 +3,7 @@ name: Check Websites Uptime and Deploy to GitHub Pages
 on:
   push:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "2-59/5 * * * *"
   workflow_dispatch:
 
 permissions:
