@@ -12,20 +12,21 @@ def check_uptime(url):
         return False
 
 
-def update_uptime_data(new_entries, max_entries=1000):
+def update_uptime_data(new_entries, current_urls, max_entries=1000):
     filename = "uptime_data.json"
-
     if os.path.exists(filename):
         with open(filename, "r") as f:
             data = json.load(f)
     else:
         data = {}
 
+    # Remove URLs that are no longer in the workflow file
+    data = {url: entries for url, entries in data.items() if url in current_urls}
+
     for url, entry in new_entries.items():
         if url not in data:
             data[url] = []
         data[url].append(entry)
-
         data[url] = data[url][-max_entries:]
 
     with open(filename, "w") as f:
@@ -39,16 +40,13 @@ def get_urls_from_env():
 
 def main():
     urls = get_urls_from_env()
-
-    timestamp = datetime.utcnow().isoformat()
+    timestamp = datetime.now().isoformat()
     new_entries = {}
-
     for url in urls:
         is_up = check_uptime(url)
         new_entries[url] = {"timestamp": timestamp, "status": "up" if is_up else "down"}
         print(f"Uptime check completed for {url}. Status: {'Up' if is_up else 'Down'}")
-
-    update_uptime_data(new_entries)
+    update_uptime_data(new_entries, urls)
 
 
 if __name__ == "__main__":

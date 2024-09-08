@@ -46,7 +46,6 @@ jobs:
         env:
           SITES: |
             https://sahiljhawar.me
-            https://example.com
             https://thissitedoesnotexist.koj.co/
         run: python check_uptime.py
 
