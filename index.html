@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Websites Uptime Chart - 12 Hour Window with Hourly Labels</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.1/dist/chartjs-adapter-moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .chart-container {
+            width: 80vw;
+            height: 70vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <canvas id="uptimeChart"></canvas>
+    </div>
+    <script>
+        let chart;
+        let allData;
+
+        async function fetchData() {
+            const response = await fetch('uptime_data.json');
+            return await response.json();
+        }
+
+        function prepareChartData(data) {
+            const datasets = [];
+            const colors = ['rgb(75, 192, 192)', 'rgb(255, 99, 132)', 'rgb(255, 205, 86)', 'rgb(54, 162, 235)'];
+
+            Object.entries(data).forEach(([site, entries], index) => {
+                if (Array.isArray(entries) && entries.length > 0) {
+                    const processedData = entries.map(entry => ({
+                        x: moment(entry.timestamp),
+                        y: entry.status === 'up' ? 1 : 0
+                    }));
+
+                    datasets.push({
+                        label: site,
+                        data: processedData,
+                        borderColor: colors[index % colors.length],
+                        backgroundColor: colors[index % colors.length],
+                        pointStyle: 'circle',
+                        pointRadius: 6,
+                        pointHoverRadius: 10
+                    });
+                } else {
+                    console.warn(`No valid data for ${site}. Skipping.`);
+                }
+            });
+
+            return datasets;
+        }
+
+        async function createChart() {
+            allData = await fetchData();
+            const datasets = prepareChartData(allData);
+
+            const ctx = document.getElementById('uptimeChart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: { datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'hour',
+                                displayFormats: {
+                                    hour: 'MMM D, HH:mm'
+                                }
+                            },
+                            ticks: {
+                                source: 'auto',
+                                autoSkip: false,
+                                maxRotation: 0,
+                                stepSize: 1
+                            },
+                            title: {
+                                display: true,
+                                text: 'Time'
+                            },
+                            min: moment().subtract(12, 'hours'),
+                            max: moment()
+                        },
+                        y: {
+                            min: -0.1,
+                            max: 1.1,
+                            ticks: {
+                                stepSize: 1,
+                                callback: function(value) {
+                                    if (value === 0) return 'Down';
+                                    if (value === 1) return 'Up';
+                                    return '';
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Status'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.parsed.y === 1 ? 'Up' : 'Down'}`;
+                                }
+                            }
+                        },
+                        zoom: {
+                            pan: {
+                                enabled: true,
+                                mode: 'x'
+                            },
+                            zoom: {
+                                wheel: {
+                                    enabled: true
+                                },
+                                pinch: {
+                                    enabled: true
+                                },
+                                mode: 'x'
+                            },
+                            limits: {
+                                x: {
+                                    min: moment().subtract(12, 'hours'),
+                                    max: moment(),
+                                    minRange: 60 * 60 * 1000 // 1 hour in milliseconds
+                                }
+                            },
+                        }
+                    }
+                },
+                plugins: [{
+                    id: 'customZoom',
+                    afterDraw: addRangeSlider
+                }]
+            });
+        }
+
+        function addRangeSlider(chart, args, options) {
+            const { ctx, chartArea: { left, right, top, bottom, width, height } } = chart;
+            const sliderHeight = 20;
+
+            ctx.save();
+
+            // Draw slider background
+            ctx.fillStyle = 'rgba(200, 200, 200, 0.3)';
+            ctx.fillRect(left, bottom + 10, width, sliderHeight);
+
+            // Calculate slider position based on current view
+            const xAxis = chart.scales.x;
+            const fullRange = xAxis.max - xAxis.min;
+            const visibleRange = chart.scales.x.end - chart.scales.x.start;
+            const sliderWidth = (visibleRange / fullRange) * width;
+            const sliderLeft = ((xAxis.start - xAxis.min) / fullRange) * width + left;
+
+            // Draw slider
+            ctx.fillStyle = 'rgba(100, 100, 100, 0.5)';
+            ctx.fillRect(sliderLeft, bottom + 10, sliderWidth, sliderHeight);
+
+            ctx.restore();
+        }
+
+        createChart();
+    </script>
+</body>
+</html>

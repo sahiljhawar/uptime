@@ -1,0 +1,65 @@
+name: Check Websites Uptime and Deploy to GitHub Pages
+
+on:
+  push:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check_uptime_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+
+      - name: Checkout gh-pages branch and pull latest data
+        run: |
+          git fetch origin gh-pages || echo "No gh-pages branch exists, creating one."
+          git checkout gh-pages || git checkout --orphan gh-pages
+          git pull origin gh-pages || echo "No gh-pages branch data yet."
+          find . -maxdepth 1 ! -name 'uptime_data.json' ! -name '.git' ! -name '.' -exec rm -rf {} +
+
+      - name: Copy uptime script from main
+        run: |
+          git checkout main -- check_uptime.py index.html
+
+      - name: Run uptime check and append data
+        env:
+          SITES: |
+            https://sahiljhawar.me
+            https://example.com
+            https://thissitedoesnotexist.koj.co/
+        run: python check_uptime.py
+
+      - name: Clean up unnecessary files
+        run: |
+          rm check_uptime.py
+
+      - name: Unstage unwanted files before commit
+        run: |
+          git reset  
+          git add uptime_data.json index.html
+
+      - name: Commit and push only necessary files
+        run: |
+          git commit -m "Update uptime data"
+          git push origin gh-pages --force
