@@ -20,7 +20,7 @@ A simple uptime monitor written in Python and HTML.
 - [ ] Remove websites from JSON if they are removed from the workflow file
 
 ## Acknowledgements
-Based on AnandChowdhary's [uptime](https://github.com/upptime/upptime) project.
+Based on AnandChowdhary's [upptime](https://github.com/upptime/upptime) project.
 
 
 Thanks to ClaudeAI for the HTML :)
