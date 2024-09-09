@@ -519,6 +519,10 @@
     {
       "timestamp": "2024-09-09T21:43:03.694398",
       "status": "up"
+    },
+    {
+      "timestamp": "2024-09-09T21:53:55.579184",
+      "status": "up"
     }
   ],
   "https://thissitedoesnotexist.koj.co/": [
@@ -1041,6 +1045,10 @@
     {
       "timestamp": "2024-09-09T21:43:03.694398",
       "status": "down"
+    },
+    {
+      "timestamp": "2024-09-09T21:53:55.579184",
+      "status": "down"
     }
   ],
   "https://reddit.com/": [
@@ -1074,6 +1082,10 @@
     },
     {
       "timestamp": "2024-09-09T21:43:03.694398",
+      "status": "down"
+    },
+    {
+      "timestamp": "2024-09-09T21:53:55.579184",
       "status": "down"
     }
   ]
