@@ -487,6 +487,10 @@
     {
       "timestamp": "2024-09-09T19:56:40.691153",
       "status": "up"
+    },
+    {
+      "timestamp": "2024-09-09T20:00:30.940444",
+      "status": "up"
     }
   ],
   "https://thissitedoesnotexist.koj.co/": [
@@ -976,6 +980,16 @@
     },
     {
       "timestamp": "2024-09-09T19:56:40.691153",
+      "status": "down"
+    },
+    {
+      "timestamp": "2024-09-09T20:00:30.940444",
+      "status": "down"
+    }
+  ],
+  "https://reddit.com/": [
+    {
+      "timestamp": "2024-09-09T20:00:30.940444",
       "status": "down"
     }
   ]
