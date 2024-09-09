@@ -543,6 +543,10 @@
     {
       "timestamp": "2024-09-09T22:43:05.809665",
       "status": "up"
+    },
+    {
+      "timestamp": "2024-09-09T22:44:23.779122",
+      "status": "up"
     }
   ],
   "https://thissitedoesnotexist.koj.co/": [
@@ -1089,6 +1093,10 @@
     {
       "timestamp": "2024-09-09T22:43:05.809665",
       "status": "down"
+    },
+    {
+      "timestamp": "2024-09-09T22:44:23.779122",
+      "status": "down"
     }
   ],
   "https://httpstat.us/$(($RANDOM % 1000))$([ $(($RANDOM % 4)) -lt 3 ] && echo \"200\" || echo \"404\")": [
@@ -1098,6 +1106,10 @@
     },
     {
       "timestamp": "2024-09-09T22:43:05.809665",
+      "status": "down"
+    },
+    {
+      "timestamp": "2024-09-09T22:44:23.779122",
       "status": "down"
     }
   ]
