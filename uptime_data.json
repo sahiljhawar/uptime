@@ -1,10 +1,6 @@
 {
   "https://sahiljhawar.me": [
     {
-      "timestamp": "2024-09-10T17:04:12.835485",
-      "status": "up"
-    },
-    {
       "timestamp": "2024-09-10T17:26:48.083142",
       "status": "up"
     },
@@ -3998,15 +3994,15 @@
     },
     {
       "timestamp": "2024-09-24T13:05:16.875858",
+      "status": "up"
+    },
+    {
+      "timestamp": "2024-09-24T13:32:59.347443",
       "status": "up"
     }
   ],
   "https://thissitedoesnotexist.koj.co/": [
     {
-      "timestamp": "2024-09-10T17:04:12.835485",
-      "status": "down"
-    },
-    {
       "timestamp": "2024-09-10T17:26:48.083142",
       "status": "down"
     },
@@ -8000,6 +7996,10 @@
     },
     {
       "timestamp": "2024-09-24T13:05:16.875858",
+      "status": "down"
+    },
+    {
+      "timestamp": "2024-09-24T13:32:59.347443",
       "status": "down"
     }
   ]
