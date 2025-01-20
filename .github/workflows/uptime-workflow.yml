@@ -45,7 +45,7 @@ jobs:
       - name: Run uptime check and append data
         env:
           SITES: |
-            https://sahiljhawar.me
+            https://sahiljhawar.github.io/
             https://thissitedoesnotexist.koj.co/
         run: python check_uptime.py
 
