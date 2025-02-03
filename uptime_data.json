@@ -1,10 +1,6 @@
 {
   "https://thissitedoesnotexist.koj.co/": [
     {
-      "timestamp": "2025-01-20T18:57:49.858042",
-      "status": "down"
-    },
-    {
       "timestamp": "2025-01-20T19:17:25.436566",
       "status": "down"
     },
@@ -3999,6 +3995,10 @@
     {
       "timestamp": "2025-02-03T06:54:13.022693",
       "status": "down"
+    },
+    {
+      "timestamp": "2025-02-03T07:19:49.430482",
+      "status": "down"
     }
   ],
   "https://sahiljhawar.github.io/": [
@@ -7928,6 +7928,10 @@
     },
     {
       "timestamp": "2025-02-03T06:54:13.022693",
+      "status": "up"
+    },
+    {
+      "timestamp": "2025-02-03T07:19:49.430482",
       "status": "up"
     }
   ]
