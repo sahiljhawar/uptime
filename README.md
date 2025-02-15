@@ -1,4 +1,4 @@
-# uptime
+# [uptime](https://github.com/sahiljhawar/uptime)
 
 A simple uptime monitor written in Python and HTML. 
 
