@@ -3,11 +3,19 @@
     {
       "timestamp": "2026-01-22T14:47:40.982684",
       "status": "up"
+    },
+    {
+      "timestamp": "2026-01-22T15:16:26.698534",
+      "status": "up"
     }
   ],
   "https://thissitedoesnotexist.koj.co/": [
     {
       "timestamp": "2026-01-22T14:47:40.982684",
+      "status": "down"
+    },
+    {
+      "timestamp": "2026-01-22T15:16:26.698534",
       "status": "down"
     }
   ]
