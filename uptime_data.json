@@ -483,6 +483,10 @@
     {
       "timestamp": "2026-01-25T04:39:15.134342",
       "status": "up"
+    },
+    {
+      "timestamp": "2026-01-25T05:17:39.299111",
+      "status": "up"
     }
   ],
   "https://thissitedoesnotexist.koj.co/": [
@@ -968,6 +972,10 @@
     },
     {
       "timestamp": "2026-01-25T04:39:15.134342",
+      "status": "down"
+    },
+    {
+      "timestamp": "2026-01-25T05:17:39.299111",
       "status": "down"
     }
   ]
