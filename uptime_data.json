@@ -1,10 +1,6 @@
 {
   "https://sahiljhawar.github.io/": [
     {
-      "timestamp": "2026-04-09T09:57:45.791239",
-      "status": "up"
-    },
-    {
       "timestamp": "2026-04-09T11:10:50.675364",
       "status": "up"
     },
@@ -3998,15 +3994,15 @@
     },
     {
       "timestamp": "2026-06-24T20:13:17.851194",
+      "status": "up"
+    },
+    {
+      "timestamp": "2026-06-24T21:49:17.120926",
       "status": "up"
     }
   ],
   "https://thissitedoesnotexist.koj.co/": [
     {
-      "timestamp": "2026-04-09T09:57:45.791239",
-      "status": "down"
-    },
-    {
       "timestamp": "2026-04-09T11:10:50.675364",
       "status": "down"
     },
@@ -8000,6 +7996,10 @@
     },
     {
       "timestamp": "2026-06-24T20:13:17.851194",
+      "status": "down"
+    },
+    {
+      "timestamp": "2026-06-24T21:49:17.120926",
       "status": "down"
     }
   ]
